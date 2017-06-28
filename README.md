@@ -12,8 +12,8 @@ awsiot-sign.py is intended for an embedded environment (like the ESP) so that RE
 
 awsiot_sign_test.py provides a command line interface for the awsiot-signing function.
 
-The micropython hmac library (as of this commit) had to be modified to work with binary (vs ASCII) keys.
+A simplified/limited hmac module which uses a subset of the hash lib is provided (the one in micropython-lib didn't handle binary keys).
 
-And the micropython urequest library (as of this commit) had to be modified in order have the GET work: get the content-length from the header and do a socket.read of that content length.
+Also the micropython urequest library (as of this commit) had to be modified in order have the GET work: get the content-length from the header and do a socket.read of that content length.
 
-The code has been tested on Mac OS X. The next step is to test on an ESP8266.
+The code has been tested on Mac OS X, ESP8266 and ESP32 using micropython 1.8.7 and 1.9.
