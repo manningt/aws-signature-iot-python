@@ -9,18 +9,12 @@ License: This code is in Public Domain or MIT License, choose suitable one for y
 
 Description: This HMAC implementation is in accordance with RFC 2104 specification.
              User supplied "key" and "message" must be a Python Byte Object.
-
-             Usage:
-
-             h = HMAC (b"key",b"The quick brown fox jumps over the lazy dog",md5)
-             h.hexdigest() => outputs 80070713463e7749b90c2dc24911e275
 """
 
 try:
     import uhashlib as _hashlib
 except ImportError:
     import hashlib as _hashlib
-
 
 class HMAC:
 
@@ -38,7 +32,6 @@ class HMAC:
 
 
         def init_pads(self):
-
                 """ creating inner padding and outer padding """
                 
                 for i in range(self.blocksize):
@@ -46,8 +39,7 @@ class HMAC:
                         self.o_key_pad.append(0x5c ^ self.key[i])
 
 
-        def init_key(self):
-                
+        def init_key(self):   
                 """ key regeneration """
                 
                 if len(self.key) > self.blocksize:
@@ -60,7 +52,6 @@ class HMAC:
 
 
         def digest(self):
-
                 """ returns a digest, byte object. """
 
                 if self.init_flag == False:
